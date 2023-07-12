@@ -2,11 +2,10 @@ import matplotlib
 import matplotlib.pyplot as plt 
 from load_mvnx import load_mvnx
 from mpl_toolkits.mplot3d import Axes3D
-import pandas as pd
 
 #Loading mvnx file
 #load_mvnx("file_path")
-data = load_mvnx(r"C:\Users\stcr3\Desktop\Data\baran_jumping1-001.mvnx")
+data = load_mvnx(r"C:\Users\stcr3\Desktop\Data\baran_walking-001.mvnx")
 
 #Reading data from the mvnx file
 frame_count = data.frame_count
@@ -94,10 +93,10 @@ for l in range(frame_count):
     ax.set_zlim3d(min_z, max_z+1)
     ax.plot(figr[l][0], figr[l][1], figr[l][2], lw=2, color="black", marker="H", ms=2, mfc="red")
     plt.draw()
-    plt.pause(0.0000001)
+    plt.pause(0.000003)
     plt.clf()
     if l >= 700:
         break
     
 plt.show()
-plt.close(fig=0)
+plt.close()
