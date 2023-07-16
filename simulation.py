@@ -2,6 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt 
 from load_mvnx import load_mvnx
 from mpl_toolkits.mplot3d import Axes3D
+import keyboard
 
 #Loading mvnx file
 #load_mvnx("file_path")
@@ -95,7 +96,7 @@ for l in range(frame_count):
     plt.draw()
     plt.pause(0.000003)
     plt.clf()
-    if l >= 700:
+    if keyboard.is_pressed("q") == True:
         break
     
 plt.show()
