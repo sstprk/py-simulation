@@ -6,7 +6,7 @@ import keyboard
 
 #Loading mvnx file
 #load_mvnx("file_path")
-data = load_mvnx(r"C:\Users\stcr3\Desktop\Data\baran_walking-001.mvnx")
+data = load_mvnx(r"C:\Users\stcr3\Desktop\Data\5kmhr-001.mvnx")
 
 #Reading data from the mvnx file
 frame_count = data.frame_count
@@ -55,41 +55,40 @@ for a in range(frame_count):
     figr.append([body_x[a], body_y[a], body_z[a]])
 
 #Finding the limits of each axis
-t=1
 for t in range(frame_count):
-    if min(figr[t][0]) >= min(figr[t-1][0]):
-        min_x = min(figr[t-1][0])
-    else:
+    min_x = min(figr[10][0])
+    if min_x >= min(figr[t][0]):
         min_x = min(figr[t][0])
-    if max(figr[t][0]) <= max(figr[t-1][0]):
-        max_x = max(figr[t-1][0])
-    else:
+
+    max_x = max(figr[10][0])
+    if max_x <= max(figr[t][0]):
         max_x = max(figr[t][0])
     
-    if min(figr[t][1]) >= min(figr[t-1][1]):
-        min_y = min(figr[t-1][1])
-    else:
+    min_y = min(figr[10][1])
+    if min_y >= min(figr[t][1]):
         min_y = min(figr[t][1])
-    if max(figr[t][1]) <= max(figr[t-1][1]):
-        max_y = max(figr[t-1][1])
-    else:
+
+    max_y = max(figr[10][1])
+    if max_y <= max(figr[t][1]):
         max_y = max(figr[t][1])
     
-    if min(figr[t][2]) >= min(figr[t-1][2]):
-        min_z = min(figr[t-1][2])
-    else:
+    min_z = min(figr[10][2])
+    if min_z >= min(figr[t][2]):
         min_z = min(figr[t][2])
-    if min(figr[t][2]) <= min(figr[t-1][2]):
-        max_z = max(figr[t-1][2])
-    else:
+
+    max_z = max(figr[10][2])
+    if max_z <= max(figr[t][2]):
         max_z = max(figr[t][2])
 
+print(max_x, min_x)
+print(max_y, min_y)
+print(max_z, min_z)
 #Ploting the figure
 fig = plt.figure()
 for l in range(frame_count):
     ax = fig.add_subplot(111, projection="3d")
     ax.view_init(elev=10, azim=-120, roll=0)
-    ax.set_xlim3d(min_x-2, max_x+1)
+    ax.set_xlim3d(min_x-2, max_x)
     ax.set_ylim3d(min_y-1, max_y+1)
     ax.set_zlim3d(min_z, max_z+1)
     ax.plot(figr[l][0], figr[l][1], figr[l][2], lw=2, color="black", marker="H", ms=2, mfc="red")
