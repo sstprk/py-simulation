@@ -80,9 +80,9 @@ for t in range(frame_count):
     if max_z <= max(figr[t][2]):
         max_z = max(figr[t][2])
 
-print(max_x, min_x)
-print(max_y, min_y)
-print(max_z, min_z)
+#print(max_x, min_x)
+#print(max_y, min_y)
+#print(max_z, min_z)
 #Ploting the figure
 fig = plt.figure()
 for l in range(frame_count):
